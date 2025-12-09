@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CabeceraStatusWidget extends StatelessWidget {
-  const CabeceraStatusWidget({super.key});
+class itemStatusWidget extends StatelessWidget {
 
+bool isCabecera;
+  itemStatusWidget({this.isCabecera=false});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -20,7 +21,9 @@ class CabeceraStatusWidget extends StatelessWidget {
             child: ClipRRect(
               borderRadius: BorderRadiusGeometry.circular(50),
               child: Image.network(
-                "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg",
+                isCabecera?
+                "https://images.pexels.com/photos/733872/pexels-photo-733872.jpeg":
+                "https://images.pexels.com/photos/1065084/pexels-photo-1065084.jpeg",
                 fit: BoxFit.cover,
               ),
             ),
@@ -30,8 +33,8 @@ class CabeceraStatusWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
-          subtitle: Text("Hace 27 minutos, 7:10 pm"),
-          trailing: Icon(Icons.more_horiz),
+          subtitle: Text(isCabecera? "Hace 27 minutos, 7:10 pm": "Ayer, 15:30"),
+          trailing: isCabecera? Icon(Icons.more_horiz): null,
         ),
       ]
     );
